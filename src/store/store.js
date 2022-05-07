@@ -5,6 +5,9 @@ import createSagaMiddleware from "@redux-saga/core";
 import rootReducer from "./root-reducer";
 import rootSaga from "./root-saga";
 
+
+//Using redux saga to manage side effects(api calls etc.)
+//why choose saga over thunk ref --> https://www.eternussolutions.com/2020/12/21/redux-thunk-redux-saga/
 const sagaMiddleware = createSagaMiddleware();
 
 const additionalMiddleware = [sagaMiddleware];
