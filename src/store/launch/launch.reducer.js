@@ -1,13 +1,17 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-const fetchLaunchStartType = 'launch/FETCH_LAUNCH_START';
-const fetchLaunchStart = createAction(fetchLaunchStartType);
 const initialState = { data: [], error: null, pending: false }
 
 const launchSlice = createSlice({
   name: 'launch',
   initialState,
   reducers: {
+    fetchLaunchStart(state){
+        return {
+            ...state,
+            pending: true
+        }
+    },
     fetchLaunchSuccess(state, action) {
         return {
             ...state,
@@ -23,14 +27,8 @@ const launchSlice = createSlice({
         }
     },
   },
-  extraReducers: (builder) => {
-      builder
-        .addCase(fetchLaunchStart, (state) => {
-            state.pending = true
-        })
-  }
 })
 
-export const { fetchLaunchSuccess, fetchLaunchError } = launchSlice.actions
-export { fetchLaunchStartType, fetchLaunchStart }
+export const { fetchLaunchStart, fetchLaunchSuccess, fetchLaunchError } = launchSlice.actions;
+
 export default launchSlice.reducer

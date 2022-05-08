@@ -30,7 +30,7 @@ describe("launchSga", () => {
 
     return expectSaga(fetchLaunchesData, callApi)
       .provide([
-        //mocking the callApi with return valuce
+        //mocking the callApi with return value
         [matchers.call.fn(callApi), callApiData],
       ])
       .put(fetchLaunchSuccess(fakeData))

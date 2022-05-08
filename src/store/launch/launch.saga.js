@@ -1,5 +1,5 @@
 import { all, call, put, takeEvery } from "redux-saga/effects"
-import { fetchLaunchStartType, fetchLaunchSuccess, fetchLaunchError } from "./launch.reducer";
+import { fetchLaunchStart, fetchLaunchSuccess, fetchLaunchError } from "./launch.reducer";
 import axios from "axios";
 import { callApi, url } from "../../requests/call-api";
 
@@ -18,7 +18,7 @@ export function* fetchLaunchesData() {
 }
 
 export function* onFetchLaunchesAsync() {
-    yield takeEvery(fetchLaunchStartType, fetchLaunchesData);
+    yield takeEvery(fetchLaunchStart.type, fetchLaunchesData);
 }
 
 export function* launchSagas() {

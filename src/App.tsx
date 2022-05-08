@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchLaunchStart } from './store/launch/launch.reducer';
+import { selectLaunchData, selectLaunchError, selectLaunchPending } from './store/launch/launch.selector';
+import CardList from './components/cardList';
+
+// function useParamSelector(selector:any, ...params:any) {
+//   return useSelector(state => selector(state, ...params));
+// }
+
 
 function App() {
-  const dispatch = useDispatch();
+  const [searchField, setSearchField] = useState('');
 
-  const launchData = useSelector((state: any) => state.launch.data);
-  const laucnPending = useSelector((state: any) => state.launch.pending);
-  const laucnError = useSelector((state: any) => state.launch.error);
+  const dispatch = useDispatch();
+  
+  const launchData = useSelector(selectLaunchData);
+  const laucnPending = useSelector(selectLaunchError);
+  const laucnError = useSelector(selectLaunchPending);
+
+  useEffect(() => {
+    dispatch(fetchLaunchStart())
+  }, [dispatch]);
+
+  const filteredLaunches = () : [] => {
+    return launchData.filter((data: any) => data.mission_name.toLowerCase().includes(searchField.toLowerCase()))
+  }
 
   return (
     <div className="App">
@@ -27,17 +44,11 @@ function App() {
         >
           Learn React
         </a>
-        <button
-          onClick={() => dispatch(fetchLaunchStart())}
-        >
-          HIT ME!!
-        </button>
+        <input onChange={(e) => setSearchField(e.target.value)} />
         {
           laucnPending && <p>Loading</p>
         }
-        {
-          launchData.map((data: any, i: number) => <div key={i}>{data.mission_name}</div>)
-        }
+        <CardList launchesData={filteredLaunches()}/>
         {laucnError && <p>{laucnError}</p>}
       </header>
     </div>
