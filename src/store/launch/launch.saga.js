@@ -1,15 +1,17 @@
 import { all, call, put, takeEvery } from "redux-saga/effects"
 import { fetchLaunchStartType, fetchLaunchSuccess, fetchLaunchError } from "./launch.reducer";
+import axios from "axios";
+import { callApi, url } from "../../requests/call-api";
 
 export function* fetchLaunchesData() {
     try{
-        const response = yield fetch('https://api.spacexdata.com/v3/launches');
+        const response = yield call(callApi, axios, url);
+
         if(response.status !== 200) {
             throw new Error('Failed to fetch launches data')
         }
-        const data = yield response.json();
-        console.log({ data })
-        yield put(fetchLaunchSuccess(data))
+       
+        yield put(fetchLaunchSuccess(response.data));
     }catch(error) {
         console.error(error);
         yield put(fetchLaunchError(error.message));
