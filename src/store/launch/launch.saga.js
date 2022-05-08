@@ -13,7 +13,6 @@ export function* fetchLaunchesData() {
        
         yield put(fetchLaunchSuccess(response.data));
     }catch(error) {
-        console.error(error);
         yield put(fetchLaunchError(error.message));
     }
 }
