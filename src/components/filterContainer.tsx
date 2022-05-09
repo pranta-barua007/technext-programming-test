@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactElement } from "react";
 import { useSelector } from "react-redux";
 
 import FilterSelector from "./filterSelector";
@@ -10,7 +10,7 @@ interface FilterContainerProps {
   setLaunches(data: any): any;
 }
 
-const FilterContainer = ({ setLaunches }: FilterContainerProps) => {
+const FilterContainer = ({ setLaunches }: FilterContainerProps) : ReactElement => {
   const launchData = useSelector(selectLaunchData);
 
   const [filterByDate, setFilterByDate] = useState("");
@@ -20,8 +20,8 @@ const FilterContainer = ({ setLaunches }: FilterContainerProps) => {
   const filteredLaunchesByOptions = (
     fieldTobeFiltered: any,
     filterOption: any
-  ) => {
-    const toBool = (param: any) => {
+  ): [] => {
+    const toBool = (param: any) : any => {
       if (param === "true") {
         return true;
       } else if (param === "false") {
@@ -38,11 +38,11 @@ const FilterContainer = ({ setLaunches }: FilterContainerProps) => {
 
     return typeof toBool(filterOption) === "boolean"
       ? launchData.filter(
-          (data: any) => data[fieldTobeFiltered] === toBool(filterOption)
-        )
+        (data: any) => data[fieldTobeFiltered] === toBool(filterOption)
+      )
       : launchData.filter((data: any) =>
-          data[fieldTobeFiltered].includes(filterOption)
-        );
+        data[fieldTobeFiltered].includes(filterOption)
+      );
   };
 
   useEffect(() => {
@@ -94,19 +94,19 @@ const FilterContainer = ({ setLaunches }: FilterContainerProps) => {
     <div>
       <FilterSelector
         filterOptions={filterByDateArray}
-        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) =>
+        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) => // eslint-disable-line
           setFilterByDate(e.currentTarget.value)
         }
       />
       <FilterSelector
         filterOptions={filterByLaunchStatusArray}
-        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) =>
+        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) => // eslint-disable-line
           setFilterByLaunchStatus(e.currentTarget.value)
         }
       />
       <FilterSelector
         filterOptions={filterByUpcomingArray}
-        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) =>
+        onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) => // eslint-disable-line
           setFilterByUpcoming(e.currentTarget.value)
         }
       />

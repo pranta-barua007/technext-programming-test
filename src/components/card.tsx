@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type CardProps = {
   name: string;
   date: string;
@@ -6,7 +8,7 @@ export type CardProps = {
   launchStatus: boolean;
 };
 
-const Card = ({ name, date, rocket, upcoming, launchStatus }: CardProps) => {
+const Card = ({ name, date, rocket, upcoming, launchStatus }: CardProps): ReactElement => {
   return (
     <div style={{ margin: "4px", border: "4px solid gray" }}>
       <p>Name: {name}</p>

@@ -1,10 +1,11 @@
+import { ReactElement } from "react";
 import Card from "./card";
 
 export type CardListProps = {
   launchesData: Array<any>;
 };
 
-const CardList = ({ launchesData }: CardListProps) => {
+const CardList = ({ launchesData }: CardListProps): ReactElement => {
   return (
     <div>
       {launchesData.map((data: any, i: any) => {

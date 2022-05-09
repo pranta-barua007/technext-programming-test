@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import {
 import CardList from "./components/cardList";
 import FilterContainer from "./components/filterContainer";
 
-function App() {
+function App() : ReactElement {
   const dispatch = useDispatch();
 
   const launchData = useSelector(selectLaunchData);
@@ -62,12 +62,12 @@ function App() {
         >
           Learn React
         </a>
+        <input onChange={(e): any => setSearchField(e.target.value)} />
+        <FilterContainer setLaunches={setLaunches} />
+        {laucnPending && <p>Loading</p>}
+        <CardList launchesData={launches} />
+        {laucnError && <p>{laucnError}</p>}
       </header>
-      <input onChange={(e) => setSearchField(e.target.value)} />
-      <FilterContainer setLaunches={setLaunches} />
-      {laucnPending && <p>Loading</p>}
-      <CardList launchesData={launches} />
-      {laucnError && <p>{laucnError}</p>}
     </div>
   );
 }

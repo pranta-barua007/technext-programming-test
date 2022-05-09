@@ -7,7 +7,7 @@ type FilterObject = {
 
 export type FilterSelectorProps = {
   filterOptions: Array<FilterObject>;
-  onSelectorChange(event: React.SyntheticEvent<HTMLSelectElement>): any;
+  onSelectorChange(event: React.SyntheticEvent<HTMLSelectElement>): any; // eslint-disable-line
 };
 
 const FilterSelector = ({
