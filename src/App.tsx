@@ -50,7 +50,6 @@ function App() {
   }, [searchField])
 
   const filteredLaunchesByOptions = (fieldTobeFiltered: any, filterOption: any) => {
-
     const toBool = (param: any) => {
       if (param === 'true') {
         return true;
@@ -63,7 +62,7 @@ function App() {
 
     if (filterOption === '') {
       //for handlding error on launchStatus and upcoming
-      fieldTobeFiltered = 'launch_date_utc';
+      return launchData;
     }
 
     return typeof (toBool(filterOption)) === 'boolean'
