@@ -1,34 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { data: [], error: null, pending: false }
+const initialState = {
+  data: [],
+  error: null,
+  pending: false,
+  filteredData: [],
+};
 
 const launchSlice = createSlice({
-  name: 'launch',
+  name: "launch",
   initialState,
   reducers: {
-    fetchLaunchStart(state){
-        return {
-            ...state,
-            pending: true
-        }
+    fetchLaunchStart(state) {
+      return {
+        ...state,
+        pending: true,
+      };
     },
     fetchLaunchSuccess(state, action) {
-        return {
-            ...state,
-            pending: false,
-            data: action.payload
-        }
+      return {
+        ...state,
+        pending: false,
+        data: action.payload,
+      };
     },
     fetchLaunchError(state, action) {
-        return {
-            ...state,
-            pending: false,
-            error: action.payload
-        }
+      return {
+        ...state,
+        pending: false,
+        error: action.payload,
+      };
     },
   },
-})
+});
 
-export const { fetchLaunchStart, fetchLaunchSuccess, fetchLaunchError } = launchSlice.actions;
+export const { fetchLaunchStart, fetchLaunchSuccess, fetchLaunchError } =
+  launchSlice.actions;
 
-export default launchSlice.reducer
+export default launchSlice.reducer;

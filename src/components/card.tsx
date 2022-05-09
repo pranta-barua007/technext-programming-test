@@ -8,7 +8,7 @@ export type CardProps = {
 
 const Card = ({ name, date, rocket, upcoming, launchStatus }: CardProps) => {
   return (
-    <div style={{ margin: '4px', border: '4px solid gray' }}>
+    <div style={{ margin: "4px", border: "4px solid gray" }}>
       <p>Name: {name}</p>
       <p>Date: {date}</p>
       <p>Rokcet: {rocket}</p>

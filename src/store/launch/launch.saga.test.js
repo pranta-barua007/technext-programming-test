@@ -38,7 +38,8 @@ describe("launchSga", () => {
       .run();
   });
 
-  it("throws error on status of 400", () => { //using testSga more advanced control over the flow
+  it("throws error on status of 400", () => {
+    //using testSga more advanced control over the flow
     const fakeData = [];
     const callApiData = { status: 400, data: fakeData };
     const err_msg = "Failed to fetch launches data";
