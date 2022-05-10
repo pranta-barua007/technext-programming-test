@@ -4,7 +4,6 @@ Clone the repo & run following commands in CLI
 ```
 git checkout testing
 ```
-
 ```
 npm i
 ```
