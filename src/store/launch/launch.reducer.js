@@ -4,7 +4,6 @@ const initialState = {
   data: [],
   error: null,
   pending: false,
-  filteredData: [],
 };
 
 const launchSlice = createSlice({
