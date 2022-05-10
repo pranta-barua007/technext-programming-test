@@ -29,7 +29,7 @@ function App(): ReactElement {
     if (launchData.length < 1) {
       dispatch(fetchLaunchStart());
     }
-    setLaunches(launchData); //again subscribing to launch data
+    setLaunches(launchData); //subscribing to launch data at change on inital load
   }, [launchData]);
 
   return (
