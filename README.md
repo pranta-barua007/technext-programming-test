@@ -1,3 +1,13 @@
+# Getting Started with Project
+
+Clone the repo & run following commands in CLI
+```
+git checkout testing
+```
+
+```
+npm i
+```
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
