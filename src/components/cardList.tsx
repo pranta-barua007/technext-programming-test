@@ -7,7 +7,7 @@ export type CardListProps = {
 
 const CardList = ({ launchesData }: CardListProps): ReactElement => {
   return (
-    <div>
+    <div className="row">
       {launchesData.map((data: any, i: any) => {
         const convertedDate: string = new Date(data.launch_date_utc)
           .toISOString()

@@ -10,12 +10,16 @@ export type CardProps = {
 
 const Card = ({ name, date, rocket, upcoming, launchStatus }: CardProps): ReactElement => {
   return (
-    <div style={{ margin: "4px", border: "4px solid gray" }}>
-      <p>Name: {name}</p>
-      <p>Date: {date}</p>
-      <p>Rokcet: {rocket}</p>
-      <p>Upcoming: {`${upcoming}`}</p>
-      <p>Status: {`${launchStatus}`}</p>
+    <div className="col s12 m6 l4">
+      <div className="card blue-grey darken-1">
+        <div className="card-content white-text">
+          <span className="card-title">Mission Name: {name}</span>
+          <p>Date: {date}</p>
+          <p>Rokcet: {rocket}</p>
+          <p>Upcoming: {`${upcoming}`}</p>
+          <p>Status: {`${launchStatus}`}</p>
+        </div>
+      </div>
     </div>
   );
 };

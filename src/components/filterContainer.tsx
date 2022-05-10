@@ -91,7 +91,7 @@ const FilterContainer = ({ setLaunches }: FilterContainerProps) : ReactElement =
   ];
 
   return (
-    <div>
+    <div className="row">
       <FilterSelector
         filterOptions={filterByDateArray}
         onSelectorChange={(e: React.SyntheticEvent<HTMLSelectElement>) => // eslint-disable-line

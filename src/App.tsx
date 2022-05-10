@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import "materialize-css/dist/css/materialize.min.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchLaunchStart } from "./store/launch/launch.reducer";
@@ -11,15 +12,15 @@ import {
 } from "./store/launch/launch.selector";
 import CardList from "./components/cardList";
 import FilterContainer from "./components/filterContainer";
+import SearchField from "./components/searchField";
 
-function App() : ReactElement {
+function App(): ReactElement {
   const dispatch = useDispatch();
 
   const launchData = useSelector(selectLaunchData);
   const laucnPending = useSelector(selectLaunchPending);
   const laucnError = useSelector(selectLaunchError);
 
-  const [searchField, setSearchField] = useState("");
   const [launches, setLaunches] = useState([]);
 
   useEffect(() => {
@@ -31,43 +32,21 @@ function App() : ReactElement {
     setLaunches(launchData); //again subscribing to launch data
   }, [launchData]);
 
-  const filteredLaunchesBySearch = (searched: string): [] => {
-    return launchData.filter(
-      (data: any) =>
-        data.mission_name.toLowerCase().includes(searched.toLowerCase()) ||
-        data.rocket.rocket_name
-          .toLowerCase()
-          .includes(searched.toLowerCase()) ||
-        data.launch_date_utc.includes(searched.toLowerCase())
-    );
-  };
-
-  useEffect(() => {
-    // subscribe on changes of searchField and filter the launches data
-    setLaunches(filteredLaunchesBySearch(searchField));
-  }, [searchField]);
-
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <input onChange={(e): any => setSearchField(e.target.value)} />
+      </header>
+      <div className="container">
+        <SearchField 
+          placeholder="Search spaceX launches" 
+          setLaunches={setLaunches}
+        />
         <FilterContainer setLaunches={setLaunches} />
         {laucnPending && <p>Loading</p>}
         <CardList launchesData={launches} />
         {laucnError && <p>{laucnError}</p>}
-      </header>
+      </div>
     </div>
   );
 }

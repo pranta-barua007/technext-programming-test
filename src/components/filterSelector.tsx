@@ -14,14 +14,16 @@ const FilterSelector = ({
   filterOptions,
   onSelectorChange,
 }: FilterSelectorProps): any => (
-  <select onChange={onSelectorChange}>
-    {filterOptions.map((option: FilterObject, i: any) => (
-      <option
-        key={i}
-        value={option.value}
-      >{`${option.name} : ${option.value}`}</option>
-    ))}
-  </select>
+  <div className="input-field col s12 m6 l4">
+    <select className="browser-default" onChange={onSelectorChange}>
+      {filterOptions.map((option: FilterObject, i: any) => (
+        <option
+          key={i}
+          value={option.value}
+        >{`${option.name} : ${option.value}`}</option>
+      ))}
+    </select>
+  </div>
 );
 
 export default FilterSelector;
