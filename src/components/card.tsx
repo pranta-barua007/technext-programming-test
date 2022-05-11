@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 export type CardProps = {
   name: string;
   date: string;
-  rocket: number;
+  rocket: string;
   upcoming: boolean;
   launchStatus: boolean;
 };
