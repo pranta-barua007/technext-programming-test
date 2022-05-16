@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-type FilterObject = {
+export type FilterObject = {
   name: string;
   value: any;
 };
@@ -13,7 +13,7 @@ export type FilterSelectorProps = {
 const FilterSelector = ({
   filterOptions,
   onSelectorChange,
-}: FilterSelectorProps): any => (
+}: FilterSelectorProps): ReactElement => (
   <div className="input-field col s12 m6 l4">
     <select className="browser-default" onChange={onSelectorChange}>
       {filterOptions.map((option: FilterObject, i: any) => (
