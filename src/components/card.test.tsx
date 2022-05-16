@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Card, { CardProps } from "./card";
+import Card from "./card";
 
 describe("Card", () => {
   test("should render text with appropiate props", () => {
