@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import FilterContainer from "./filterContainer";
 import FilterSelectorMock from "./filterSelector";
 import { useSelector } from "react-redux";
+import { getPreviousDate } from "../utils/date.util";
 import * as React from "react";
 
 jest.mock("./filterSelector", () =>
@@ -16,7 +17,10 @@ jest.mock("react-redux", () => (
 
 describe("filterContainer", () => {
     const useSelectorMock = useSelector as jest.Mock;
-    let state: any;
+    let state : any;
+    let lastWeek : any;
+    let lastMonth : any;
+    let lastYear : any;
     beforeEach(() => {
         jest.clearAllMocks();
         state = {
@@ -25,14 +29,22 @@ describe("filterContainer", () => {
                 error: null,
                 pending: false,
             }
-        }
+        };
     });
+    
+    lastWeek = getPreviousDate(7);
+    lastMonth = getPreviousDate(30);
+    lastMonth = lastMonth.split("-");
+    lastMonth = `${lastMonth[0]}-${lastMonth[1]}`;
+    lastYear = getPreviousDate(365);
+    lastYear = lastYear.split("-");
+    lastYear = `${lastYear[0]}`;
 
     const filterByDateMock: Array<any> = [
         { name: "Select Filter By Date", value: "" },
-        { name: "Last week", value: "2022-05-09" },
-        { name: "Last month", value: "2022- 04" },
-        { name: "Last year", value: "2021" },
+        { name: "Last week", value: lastWeek },
+        { name: "Last month", value: lastMonth },
+        { name: "Last year", value: lastYear },
     ];
 
     const filterByLaunchStatusMock: Array<any> = [

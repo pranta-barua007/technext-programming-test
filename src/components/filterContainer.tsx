@@ -66,7 +66,7 @@ const FilterContainer = ({ setLaunches }: FilterContainerProps) : ReactElement =
   let lastWeek = getPreviousDate(7);
   let lastMonth: any = getPreviousDate(30);
   lastMonth = lastMonth.split("-");
-  lastMonth = `${lastMonth[0]}- ${lastMonth[1]}`;
+  lastMonth = `${lastMonth[0]}-${lastMonth[1]}`;
   let lastYear: any = getPreviousDate(365);
   lastYear = lastYear.split("-");
   lastYear = `${lastYear[0]}`;
