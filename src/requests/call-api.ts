@@ -7,10 +7,6 @@ interface IlaunchData {
   rocket: object,
   launch_date_utc: string
 }
-
-export const getLaunchData = () =>
-  axios.get<IlaunchData[]>(url);
-
 export interface ResponseGenerator {
   config?: any,
   data?: any,
@@ -19,3 +15,6 @@ export interface ResponseGenerator {
   status?: number,
   statusText?: string
 }
+
+export const getLaunchData = (): Promise<ResponseGenerator> =>
+  axios.get<IlaunchData[]>(url);
