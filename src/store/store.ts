@@ -9,7 +9,7 @@ import rootSaga from "./root-saga";
 //why choose saga over thunk ref --> https://www.eternussolutions.com/2020/12/21/redux-thunk-redux-saga/
 const sagaMiddleware = createSagaMiddleware();
 
-const additionalMiddleware = [sagaMiddleware];
+const additionalMiddleware: Array<any> = [sagaMiddleware];
 
 if (process.env.NODE_ENV !== "production") {
   additionalMiddleware.push(logger);
@@ -23,4 +23,5 @@ const store = configureStore({
 
 sagaMiddleware.run(rootSaga);
 
+export type RootState = ReturnType<typeof store.getState>
 export { store };

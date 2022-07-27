@@ -8,7 +8,9 @@ describe("launchReducer", () => {
   const initialState = { data: [], error: null, pending: false };
 
   it("should return the initial state", () => {
-    expect(launchReducer(undefined, {})).toEqual(initialState);
+    expect(launchReducer(undefined, {
+      type: undefined
+    })).toEqual(initialState);
   });
 
   it("should set pending to true", () => {

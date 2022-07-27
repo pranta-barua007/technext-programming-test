@@ -4,19 +4,18 @@ import {
   fetchLaunchSuccess,
   fetchLaunchError,
 } from "./launch.reducer";
-import axios from "axios";
-import { callApi, url } from "../../requests/call-api";
+import { getLaunchData, ResponseGenerator } from "../../requests/call-api";
 
 export function* fetchLaunchesData() {
   try {
-    const response = yield call(callApi, axios, url);
+    const response: ResponseGenerator = yield call(getLaunchData);
 
     if (response.status !== 200) {
       throw new Error("Failed to fetch launches data");
     }
 
     yield put(fetchLaunchSuccess(response.data));
-  } catch (error) {
+  } catch (error: any) {
     yield put(fetchLaunchError(error.message));
   }
 }

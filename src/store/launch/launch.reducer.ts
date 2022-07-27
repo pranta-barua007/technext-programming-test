@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface LaunchInitialState {
+  data: any,
+  error: String | null,
+  pending: Boolean
+}
+
+const initialState: LaunchInitialState = {
   data: [],
   error: null,
   pending: false,

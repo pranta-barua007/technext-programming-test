@@ -1,6 +1,8 @@
 import { createSelector } from "reselect";
 
-const selectLaunch = (state) => state.launch;
+import { RootState } from "../store";
+
+const selectLaunch = (state: RootState) => state.launch;
 
 export const selectLaunchData = createSelector(
   [selectLaunch],
