@@ -5,8 +5,9 @@ import {
   fetchLaunchError,
 } from "./launch.reducer";
 import { getLaunchData, ResponseGenerator } from "../../requests/call-api";
+import { GeneratorFunction, GeneratorCallerFunction, GeneratorRunnerFunction } from "../saga.types";
 
-export function* fetchLaunchesData() {
+export function* fetchLaunchesData(): GeneratorFunction {
   try {
     const response: ResponseGenerator = yield call(getLaunchData);
 
@@ -20,10 +21,10 @@ export function* fetchLaunchesData() {
   }
 }
 
-export function* onFetchLaunchesAsync() {
+export function* onFetchLaunchesAsync(): GeneratorCallerFunction {
   yield takeEvery(fetchLaunchStart.type, fetchLaunchesData);
 }
 
-export function* launchSagas() {
+export function* launchSagas(): GeneratorRunnerFunction {
   yield all([call(onFetchLaunchesAsync)]);
 }
